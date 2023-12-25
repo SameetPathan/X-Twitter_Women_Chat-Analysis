@@ -1,4 +1,5 @@
 import "./App.css";
+import PieChart from "./components/ChartsTwits";
 import Footer from "./components/Footer";
 import Home from "./components/Home";
 import Navbar from "./components/Navbar";
@@ -15,15 +16,26 @@ function App() {
       <Navbar setLoggedStatus={setLoggedStatus} loggedStatus={loggedStatus} setCurrentAccount={setCurrentAccount} />
       <Routes>
         {loggedStatus ? (
+          <>
           <Route
             exact
             path="/"
             element={<Home></Home>}
           />
+           <Route
+            exact
+            path="/charts"
+            element={<PieChart></PieChart>}
+          /></>
         ) : (
           <>
             <Route exact path="/" element={<BackgroundC />} />
             <Route path="*" element={<BackgroundC />} />
+            <Route
+            exact
+            path="/charts"
+            element={<PieChart></PieChart>}
+          />
           </>
         )}
       </Routes>
